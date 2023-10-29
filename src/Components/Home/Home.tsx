@@ -12,6 +12,7 @@ const Home = () => {
         <div>Home
             <button>Click me</button>
             {apiMessage && <p>{apiMessage}</p>}
+            <p>la dee da</p>
         </div>
     )
 }
