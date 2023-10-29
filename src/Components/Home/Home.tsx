@@ -13,6 +13,7 @@ const Home = () => {
             <button>Click me</button>
             {apiMessage && <p>{apiMessage}</p>}
             <p>la dee daa</p>
+            <p>music is cool</p>
         </div>
     )
 }
