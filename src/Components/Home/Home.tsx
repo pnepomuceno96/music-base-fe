@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Feed from '../Feed/Feed'
 
 const Home = () => {
     // Temporary code for simple end to end api call
@@ -10,10 +11,13 @@ const Home = () => {
 
     return (
         <div>Home
+            {/* does nothing
             <button>Click me</button>
+
             {apiMessage && <p>{apiMessage}</p>}
             <p>la dee daa</p>
-            <p>music is cool</p>
+            <p>music is cool</p> */}
+            <Feed />
         </div>
     )
 }
