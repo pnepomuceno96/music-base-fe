@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { PostType } from '../../Utility/PostType'
-
 const Post = (props: {post: PostType}) => {
     let [release, setRelease] = useState({} as any)
     let [loading, load] = useState(true)
@@ -14,31 +13,36 @@ const Post = (props: {post: PostType}) => {
             .then((response) => response.json())
             .then((result) => {
                 console.log(result)
+                setRelease(result)
                 //check individual releases for cover art
-                for(let i = 0; i < result.releases.length; i++) {
-                    fetch(`${mburl}release/${result.releases[i].id}/cover-art`, 
-                        // {headers: {"Content-Type": "application/json",
-                        // "Access-Control-Allow-Origin": "*",
-                        // "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
-                        // "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS"
-                        // }}
-                        //)
+                // for(let i = 0; i < result.releases.length; i++) {
+                //     fetch(`${mburl}release/${result.releases[i].id}/cover-art`, 
+                //         // {headers: {"Content-Type": "application/json",
+                //         // "Access-Control-Allow-Origin": "*",
+                //         // "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
+                //         // "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS"
+                //         // }}
+                //         )
 
-                        .then((response) => response.json())
-                        .then((result) => {
-                            console.log("cover art json: ")
-                            console.log(result)
-                            setCoverArt(result.images.image)
-                        })
-                }
+                //         .then((response) => response.json())
+                //         .then((result) => {
+                //             console.log("cover art json: ")
+                //             console.log(result)
+                //             setCoverArt(result.images.image)
+                    // })
+                //}
             })
     }, [])
 
+
+    
     return (
         <div className='rounded-3xl bg-slate-100'>
             <div className='flex flex-col items-start p-5'>
             <h2 className='text-2xl'>username</h2>
-            <div className=''>body</div>
+            <div className=''>{props.post.body}</div>
+            <div>{release.title}</div>
+            <div>by {release['artist-credit'][0].name}</div>
             </div>
 
             {/* Album cover */}
